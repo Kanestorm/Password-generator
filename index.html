@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <title>Pass</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            background-color: rgb(164, 183, 187);
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            background-color: rgb(199, 230, 236);
+            color: black;
+            text-align: center;
+            padding: 100px 60px;
+            border-radius: 10px;
+            box-shadow: 10px 12px rgb(150, 162, 169);
+        }
+
+        input {
+            border-radius: 5px;
+            background-color: rgb(216, 225, 233);
+            padding: 5px 10px;
+        }
+
+        button {
+            padding: 5px 20px;
+            border-radius: 10px;
+            color: black;
+            background-color: rgb(116, 196, 214);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Password Generator</h1>
+            <input type="text" id="fir" placeholder="First Name"><br><br>
+            <input type="text" id="sec" placeholder="Last Name"><br><br>
+            <input type="text" id="mob" placeholder="Mobile Number"><br><br>
+            <input type="text" id="password"><br><br>
+            <button onclick="generate()"> Click Here </button>
+        </div>
+    </div>
+    <script>
+        let password = document.getElementById("password");
+
+        function generate() {
+            const first = document.getElementById("fir").value;
+            const last = document.getElementById("sec").value;
+            const number = document.getElementById("mob").value;
+            const special = "$#%@&";
+            let pass = "";
+            for(let i = 0; i < 12; i++){
+                if(i <= 3){
+                    pass += first[Math.floor(Math.random() * first.length)];
+                }
+                else if(i > 3 && i <= 5){
+                    pass += last[Math.floor(Math.random() * last.length)];
+                }
+                else if(i > 6){
+                    pass += number[Math.floor(Math.random() * number.length)];
+                }
+                else{
+                    pass += special[Math.floor(Math.random() * special.length)];
+                }
+            }
+            password.value = pass;
+        }
+    </script>
+</body>
+
+</html>
